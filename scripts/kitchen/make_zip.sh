@@ -62,12 +62,20 @@ CREATE_FLASHABLE_ZIP()
       -f "${ZIP_BUILD_DIR}/vendor_boot.img" || \
       -f "${ZIP_BUILD_DIR}/init_boot.img" || \
       -f "${ZIP_BUILD_DIR}/vbmeta.img" || \
+      -f "${ZIP_BUILD_DIR}/up_param_1080p.bin" || \
+      -f "${ZIP_BUILD_DIR}/up_param_1440p.bin" || \
       -f "${ZIP_BUILD_DIR}/dtbo.img" ]]; then
 
        EXTRA_BLOCKS+=$'\nui_print "Installing Kernel...";'
 
        [[ -f "${ZIP_BUILD_DIR}/boot.img" ]] && \
         EXTRA_BLOCKS+=$'\nupdate_zip boot.img $(find_block boot);'
+
+       [[ -f "${ZIP_BUILD_DIR}/up_param_1080p.bin" ]] && \
+        EXTRA_BLOCKS+=$'\nupdate_zip up_param_1080p.bin $(find_block up_param);'
+
+       [[ -f "${ZIP_BUILD_DIR}/up_param_1440p.bin" ]] && \
+        EXTRA_BLOCKS+=$'\nupdate_zip up_param_1440p.bin $(find_block up_param);'
 
        [[ -f "${ZIP_BUILD_DIR}/vendor_boot.img" ]] && \
         EXTRA_BLOCKS+=$'\nupdate_zip vendor_boot.img $(find_block vendor_boot);'
@@ -90,9 +98,6 @@ CREATE_FLASHABLE_ZIP()
         EXTRA_BLOCKS+=$'\nui_print "Installing Prism...";\nupdate_zip prism.img $(find_block prism);'
     fi
 
-    if [[ -f "${ZIP_BUILD_DIR}/up_param.bin" ]]; then
-        EXTRA_BLOCKS+=$'\nui_print "Installing Param...";\nupdate_zip up_param.bin $(find_block up_param);'
-    fi
 
     if [[ -f "${UPDATER_SCRIPT_PATH}" ]]; then
         local ASSERT_BLOCKS="${EXTRA_BLOCKS//$'\n'/\\n}"

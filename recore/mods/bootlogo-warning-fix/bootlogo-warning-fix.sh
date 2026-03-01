@@ -1,19 +1,26 @@
 #!/bin/bash
 
-if [ -z "$SCRPATH" ]; then
-    SCRPATH="$(cd "$(dirname "$0")" && pwd)"
+# Paths
+PARAM_DIR="$BLOBS/param"
+DEST_DIR="$OUT"
+
+# Make sure destination exists
+mkdir -p "$DEST_DIR"
+
+# Decide which file to copy
+if [ "$DEVICE_SINGLE_SYSTEM_IMAGE" = "essi" ]; then
+    SRC_FILE="$PARAM_DIR/up_param_1080p.bin"
+elif [ "$DEVICE_SINGLE_SYSTEM_IMAGE" = "essi64" ]; then
+    SRC_FILE="$PARAM_DIR/up_param_1440p.bin"
+else
+    SRC_FILE="$PARAM_DIR/up_param.bin"
 fi
 
-PROJECT_ROOT="$(cd "$SCRPATH/../../../" && pwd)"
-
-SRC_FILE="$SCRPATH/param/up_param.bin"
-OUT_DIR="$PROJECT_ROOT/out"
-
-if [ ! -f "$SRC_FILE" ]; then
-    echo "up_param.bin not found in $SCRPATH/param"
-    exit 0
+# Check if file exists
+if [ -f "$SRC_FILE" ]; then
+    echo "Copying $(basename "$SRC_FILE") to $DEST_DIR"
+    cp -f "$SRC_FILE" "$DEST_DIR/"
+else
+    echo "Error: $SRC_FILE not found!"
+    exit 1
 fi
-
-mkdir -p "$OUT_DIR"
-cp -f "$SRC_FILE" "$OUT_DIR/up_param.bin"
-chmod 0644 "$OUT_DIR/up_param.bin"
