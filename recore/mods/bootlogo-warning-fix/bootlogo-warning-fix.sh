@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# Get script directory
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Paths
-PARAM_DIR="$SCRIPT_DIR/../param"
+PARAM_DIR="$SCRIPT_DIR/../blobs/param"
 DEST_DIR="$OUT"
 
-# Fallback if OUT not defined
+# fallback if OUT not defined
 if [ -z "$DEST_DIR" ]; then
     DEST_DIR="$SCRIPT_DIR/out"
 fi
@@ -23,7 +22,7 @@ else
     SRC_FILE="$PARAM_DIR/up_param_1080p.bin"
 fi
 
-# Check if file exists
+# Check file
 if [ -f "$SRC_FILE" ]; then
     echo "Copying $(basename "$SRC_FILE") to $DEST_DIR"
     cp -f "$SRC_FILE" "$DEST_DIR/"
