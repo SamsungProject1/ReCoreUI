@@ -35,7 +35,7 @@ PATCH_CAMERA_LIBS() {
     [[ -z "$FILES" ]] && return 0
 
     while IFS= read -r FILE; do
-        sed -i "s/ro.product.name/ro.astro.codename/g" "$FILE"
+        sed -i "s/ro.product.name/ro.recore.codename/g" "$FILE"
         LOG_INFO "Patched camera library ${FILE#$WORKSPACE/}"
     done <<< "$FILES"
 }

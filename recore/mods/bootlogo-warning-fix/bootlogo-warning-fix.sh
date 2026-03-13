@@ -1,10 +1,17 @@
 #!/bin/bash
 
+# Get script directory
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 # Paths
-PARAM_DIR="$BLOBS/param"
+PARAM_DIR="$SCRIPT_DIR/../param"
 DEST_DIR="$OUT"
 
-# Make sure destination exists
+# Fallback if OUT not defined
+if [ -z "$DEST_DIR" ]; then
+    DEST_DIR="$SCRIPT_DIR/out"
+fi
+
 mkdir -p "$DEST_DIR"
 
 # Decide which file to copy
@@ -13,7 +20,7 @@ if [ "$DEVICE_SINGLE_SYSTEM_IMAGE" = "essi" ]; then
 elif [ "$DEVICE_SINGLE_SYSTEM_IMAGE" = "essi64" ]; then
     SRC_FILE="$PARAM_DIR/up_param_1440p.bin"
 else
-    SRC_FILE="$PARAM_DIR/up_param.bin"
+    SRC_FILE="$PARAM_DIR/up_param_1080p.bin"
 fi
 
 # Check if file exists
