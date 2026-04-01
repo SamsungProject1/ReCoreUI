@@ -10,9 +10,6 @@
 FF_IF_DIFF "stock" "SETTINGS_CONFIG_BRAND_NAME"
 FF_IF_DIFF "stock" "SYSTEM_CONFIG_SIOP_POLICY_FILENAME"
 
-BPROP "system" "ro.product.system.model" "SM-S911B"
-BPROP "system" "ro.product.product.model" "r12sxxx"
-
 if [[ -n "$RECORE_CODENAME" ]]; then
     BPROP "system" "ro.recore.codename" "$RECORE_CODENAME"
 else
