@@ -65,7 +65,7 @@ To provide a modular, device-adaptive OneUI port framework that can patch suppor
 This project wouldn't be possible without the incredible work of:
 
 - **[Salvo Giangreco](https://github.com/salvogiangri)** - The man behind the **[UN1CA](https://github.com/salvogiangri/UN1CA)** project and a true leader in the Samsung community. The initial ideas and inspiration that influenced early OneUI port development. 
-- **[SameerAlSahab](https://github.com/SameerAlSahab)** - The initial ideas and inspiration behind the original framework.
+- **[SameerAlSahab](https://github.com/SameerAlSahab)** - The initial ideas and inspiration behind the original framework of [AstroROM](https://github.com/SameerAlSahab/ProjectAstro).
 - **[BlassGO](https://github.com/BlassGO)** - For his Dynamic Installer.
 - **[Danda420](https://github.com/Danda420)** - For his genfscontexts.
 - **[jesec](https://github.com/jesec)** - For samfirm.js , which we use to download the latest firmwares.
