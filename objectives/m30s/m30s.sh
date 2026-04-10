@@ -3,9 +3,9 @@ CODENAME="m30s"
 PLATFORM="ex_9611"
 
 # Stock firmware details for download
-STOCK_MODEL="SM-M307F"
-STOCK_CSC="INS"
-STOCK_IMEI="351521110111119"
+STOCK_MODEL="SM-A515F"
+STOCK_CSC="XME"
+STOCK_IMEI="352353115333368"
 
 # Source firmware details for download
 MODEL="SM-S711B"
